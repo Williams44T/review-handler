@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var productSchema = mongoose.schema({
+var productSchema = mongoose.Schema({
   _id: {
     type: Number,
     unique: true,
@@ -15,3 +15,11 @@ var productSchema = mongoose.schema({
     }
   }]
 })
+
+var ProductModel = mongoose.model('Product', productSchema);
+
+var insertOne = (product, next) => {
+  ProductModel.create(product, next);
+};
+
+module.exports.insertOne = insertOne;

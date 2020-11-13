@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var reviewSchema = mongoose.schema({
+var reviewSchema = mongoose.Schema({
   product_id: Number,
   rating: Number,
   recommended: Boolean,
@@ -18,4 +18,12 @@ var reviewSchema = mongoose.schema({
     name: String,
     rating: Number
   }]
-})
+});
+
+var ReviewModel = mongoose.model('Review', reviewSchema);
+
+var insertOne = (review, next) => {
+  ReviewModel.create(review, next);
+};
+
+module.exports.insertOne = insertOne;
