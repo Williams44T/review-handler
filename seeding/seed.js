@@ -75,8 +75,8 @@ var seedReviews = (products, min, max) => {
 }
 
 Products.removeAll(() => {
-  var products = seedProducts(2);
+  var products = seedProducts(100);
   Reviews.removeAll(() => {
-    seedReviews(products, 1, 5);
+    seedReviews(products, 2, 15);
   });
 });
