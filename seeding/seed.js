@@ -1,23 +1,34 @@
 var ratingCategoryData = require('./ratingCategoryData'); //array of objects
+var Products = require('../db/models/products.js');
+var mongoose = require('mongoose');
 
-var shuffle = (array) => {
-  for (var i = array.length - 1; i > 0; i--) {
+mongoose.connect('mongodb://localhost/adidas');
+
+var shuffle = (arr) => {
+  for (var i = arr.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
 };
 
-// var createProducts = (qty) => {
-//   var products = [];
+var createProducts = (qty) => {
+  var products = [];
 
-//   for (i = 0; i < qty; i++) {
-//     //randomly choose how many rating categories we want this product to have
-//     var categoryQty = Math.floor(Math.random() * 4) + 2 //min of 2, max of 5
-//     //shuffle the category data
+  for (var i = 0; i < qty; i++) {
+    var categoryQty = Math.floor(Math.random() * 4) + 2 //min of 2, max of 5
+    shuffle(ratingCategoryData);
+    var product = {
+      product_id: i,
+      rating_categories: ratingCategoryData.slice(0, categoryQty)
+    };
+    Products.insertOne(product);
+    products.push(product);
+  }
 
-//     products.push({
-//       id: i,
-//       rating_categories
-//     })
-//   }
-// }
+  return products;
+};
+
+Products.removeAll(() => {
+  var products = createProducts(2);
+  console.log(products);
+});
