@@ -7,9 +7,9 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
+    "mongoose": "^5.10.14"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
