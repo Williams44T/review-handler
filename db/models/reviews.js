@@ -22,8 +22,13 @@ var reviewSchema = mongoose.Schema({
 
 var ReviewModel = mongoose.model('Review', reviewSchema);
 
-var insertOne = (review, next) => {
+var insertOne = (review, next=()=>{}) => {
   ReviewModel.create(review, next);
 };
 
+var removeAll = (next=()=>{}) => {
+  ReviewModel.db.dropCollection('reviews', next);
+}
+
 module.exports.insertOne = insertOne;
+module.exports.removeAll = removeAll;
