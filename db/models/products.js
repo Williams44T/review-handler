@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var productSchema = mongoose.Schema({
-  _id: {
+  product_id: {
     type: Number,
     unique: true,
   },
@@ -9,17 +9,19 @@ var productSchema = mongoose.Schema({
     name: String, // ex. 'Width'
     left: String, // ex. 'too small'
     best: String, // ex. 'perfect!'
-    right: {
-      type: String, // ex. 'too big'
-      default: ''
-    }
+    right: String, // ex. 'too big'
   }]
 })
 
 var ProductModel = mongoose.model('Product', productSchema);
 
-var insertOne = (product, next) => {
+var insertOne = (product, next=()=>{}) => {
   ProductModel.create(product, next);
 };
 
+var removeAll = (next=()=>{}) => {
+  ProductModel.db.dropCollection('products', next);
+};
+
 module.exports.insertOne = insertOne;
+module.exports.removeAll = removeAll;
