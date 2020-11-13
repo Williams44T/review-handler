@@ -7,8 +7,11 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "seed": "node seeding/seed.js"
+  },
   "dependencies": {
+    "faker": "^5.1.0",
     "mongoose": "^5.10.14"
   },
   "devDependencies": {
