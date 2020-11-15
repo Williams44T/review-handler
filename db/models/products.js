@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var reviewSchema = require('./reviews.js')
 
 var productSchema = mongoose.Schema({
   product_id: {
@@ -10,8 +11,9 @@ var productSchema = mongoose.Schema({
     left: String, // ex. 'too small'
     best: String, // ex. 'perfect!'
     right: String, // ex. 'too big'
-  }]
-})
+  }],
+  reviews: [reviewSchema]
+});
 
 var ProductModel = mongoose.model('Product', productSchema);
 

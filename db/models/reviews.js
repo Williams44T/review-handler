@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 var reviewSchema = mongoose.Schema({
-  product_id: Number,
   rating: Number,
   recommended: Boolean,
   created: Date,
@@ -20,15 +19,4 @@ var reviewSchema = mongoose.Schema({
   }]
 });
 
-var ReviewModel = mongoose.model('Review', reviewSchema);
-
-var insertOne = (review, next=()=>{}) => {
-  ReviewModel.create(review, next);
-};
-
-var removeAll = (next=()=>{}) => {
-  ReviewModel.db.dropCollection('reviews', next);
-}
-
-module.exports.insertOne = insertOne;
-module.exports.removeAll = removeAll;
+module.exports = reviewSchema;
