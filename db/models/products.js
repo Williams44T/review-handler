@@ -26,7 +26,7 @@ var removeAll = (next=()=>{}) => {
 };
 
 var findOne = (id, next=()=>{}) => {
-  ProductModel.find({product_id: id}, next);
+  ProductModel.where('product_id').equals(id).exec(next);
 };
 
 module.exports = {insertOne, removeAll, findOne};
