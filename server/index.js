@@ -10,8 +10,8 @@ mongoose.connect('mongodb://localhost/adidas', mongoOptions);
 
 var app = express();
 
-app.get('/', (req, res) => {
-  console.log('GET received');
+app.get('/products/:id/reviews', (req, res) => {
+  console.log('GET request received for product id ' + req.params.id);
   productController.findProduct(req, res);
 });
 

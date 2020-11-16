@@ -1,9 +1,9 @@
 var productModel = require('../models/products.js');
 
 var findProduct = (req, res) => {
-  productModel.findOne(2, (err, product) => {
-    if (err) { return res.sendStatus(404); }
-    res.status(200).json(product);
+  productModel.findOne(req.params.id, (err, product) => {
+    if (err || product.length === 0) { return res.sendStatus(404); }
+    res.status(200).send(product[0]);
   });
 };
 
