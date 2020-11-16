@@ -25,5 +25,8 @@ var removeAll = (next=()=>{}) => {
   ProductModel.db.dropCollection('products', next);
 };
 
-module.exports.insertOne = insertOne;
-module.exports.removeAll = removeAll;
+var findOne = (id, next=()=>{}) => {
+  ProductModel.where('product_id').equals(id).exec(next);
+};
+
+module.exports = {insertOne, removeAll, findOne};

@@ -8,9 +8,11 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node seeding/seed.js"
+    "seed": "node seeding/seed.js",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "faker": "^5.1.0",
     "mongoose": "^5.10.14"
   },
