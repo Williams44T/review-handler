@@ -17,6 +17,8 @@
     "mongoose": "^5.10.14"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "webpack": "^5.5.0",
+    "webpack-cli": "^4.2.0"
   }
 }
