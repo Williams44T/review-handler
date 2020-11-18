@@ -1,0 +1,1 @@
+import something from './components/App.jsx';
