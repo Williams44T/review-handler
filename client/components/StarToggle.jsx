@@ -1,7 +1,7 @@
 import React from 'react';
 
 var StarToggle = (props) => (
-  <button>{props.star} STARS</button>
+  <button onClick={() => props.onClick(props.star)}>{props.star} STARS</button>
 );
 
 export default StarToggle;

@@ -19,7 +19,7 @@ class Breakdown extends React.Component {
   }
 
   toggleFilter(star) {
-    var filters = this.state.filter;
+    var filters = this.state.filters;
     if (filters.includes(star)) {
       var idx = filters.indexOf(star);
       filters.splice(idx, 1);
@@ -37,6 +37,7 @@ class Breakdown extends React.Component {
         key={count[0]}
         star={count[0]}
         count={count[1]}
+        onClick={this.toggleFilter.bind(this)}
       />)}
     </div>)
   }
