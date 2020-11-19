@@ -1,6 +1,7 @@
 import React from 'react';
 import Overall from './Overall.jsx';
 import Breakdown from './Breakdown.jsx';
+import Recommendation from './Recommendation.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class App extends React.Component {
     this.state = {
       reviewCount: this.props.product.reviews.length,
       avgRating: this.getAvgRating(this.props.product.reviews),
+      recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: []
     };
   }
@@ -15,6 +17,11 @@ class App extends React.Component {
   getAvgRating(reviews) {
     var avg = reviews.reduce((total, review) => total + review.rating, 0) / reviews.length;
     return avg.toFixed(1);
+  }
+
+  getRecommendedPercent(reviews) {
+    var trueCount = reviews.reduce((count, review) => review.recommended ? ++count : count, 0);
+    return Math.round(trueCount / reviews.length * 100);
   }
 
   toggleFilter(star) {
@@ -41,8 +48,8 @@ class App extends React.Component {
           filters={this.state.filters}
           onClick={this.toggleFilter.bind(this)}
         />
+        <Recommendation recommended={this.state.recommendedPercent} />
         {/*
-        <Recommendation />
         <Categories /> */}
       </div>
       {/* </div>
