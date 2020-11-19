@@ -20,7 +20,10 @@ class Breakdown extends React.Component {
   render() {
     return (<div>
       <h4>RATING BREAKDOWN</h4>
-      <StarFilter filters={this.props.filters} />
+      <StarFilter
+        filters={this.props.filters}
+        onClick={this.props.onClick}
+      />
       {this.state.counts.map(count => <StarCount
         key={count[0]}
         star={count[0]}
