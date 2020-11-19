@@ -1,5 +1,6 @@
 import React from 'react';
 import Overall from './Overall.jsx';
+import Breakdown from './Breakdown.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class App extends React.Component {
           avgRating={this.state.avgRating}
           reviewCount={this.state.reviewCount}
         />
-        {/* <Breakdown />
+        <Breakdown reviews={this.props.product.reviews} />
+        {/*
         <Recommendation />
         <Categories /> */}
       </div>
