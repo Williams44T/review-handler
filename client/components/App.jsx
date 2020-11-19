@@ -10,8 +10,18 @@ class App extends React.Component {
 
   render() {
     return (<div>
-      <div>please let this work</div>
-      <div>{this.props.product.reviews[0].username}</div>
+      <h3>RATINGS & REVIEWS</h3>
+      {/* <div>
+        <Overall />
+        <Breakdown />
+        <Recommendation />
+        <Categories />
+      </div>
+      </div>
+        <Filter />
+        <Reviews />
+        <Actions />
+      </div> */}
     </div>);
   }
 
