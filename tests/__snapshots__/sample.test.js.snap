@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render main component correctly 1`] = `
+<div>
+  <div>
+    please let this work
+  </div>
+  <div>
+    humpty.dumpty
+  </div>
+</div>
+`;
