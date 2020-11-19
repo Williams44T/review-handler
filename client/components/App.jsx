@@ -2,6 +2,7 @@ import React from 'react';
 import Overall from './Overall.jsx';
 import Breakdown from './Breakdown.jsx';
 import Recommendation from './Recommendation.jsx';
+import Categories from './Categories.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -49,8 +50,10 @@ class App extends React.Component {
           onClick={this.toggleFilter.bind(this)}
         />
         <Recommendation recommended={this.state.recommendedPercent} />
-        {/*
-        <Categories /> */}
+        <Categories
+          categories={this.props.product.rating_categories}
+          reviews={this.props.product.reviews}
+        />
       </div>
       {/* </div>
         <Filter />
