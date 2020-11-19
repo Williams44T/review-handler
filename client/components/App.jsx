@@ -3,6 +3,7 @@ import Overall from './Overall.jsx';
 import Breakdown from './Breakdown.jsx';
 import Recommendation from './Recommendation.jsx';
 import Categories from './Categories.jsx';
+import Order from './Order.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,10 @@ class App extends React.Component {
       reviewCount: this.props.product.reviews.length,
       avgRating: this.getAvgRating(this.props.product.reviews),
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
-      filters: []
+      filters: [],
+      newest: true,
+      helpful: false,
+      relevant: false
     };
   }
 
@@ -36,6 +40,14 @@ class App extends React.Component {
     this.setState({filters});
   }
 
+  toggleOrder(order) {
+    var newest, helpful, relevant;
+    if (order === 'newest') { newest = true; helpful = false; relevant = false; }
+    if (order === 'helpful') { newest = false; helpful = true; relevant = false; }
+    if (order === 'relevant') { newest = false; helpful = false; relevant = true; }
+    this.setState({newest, helpful, relevant}, console.log(this.state.newest, this.state.helpful, this.state.relevant));
+  }
+
   render() {
     return (<div>
       <h3>RATINGS & REVIEWS</h3>
@@ -55,11 +67,13 @@ class App extends React.Component {
           reviews={this.props.product.reviews}
         />
       </div>
-      {/* </div>
-        <Filter />
+      <div>
+        <Order onClick={this.toggleOrder.bind(this)}/>
+        {/*
         <Reviews />
         <Actions />
-      </div> */}
+      */}
+      </div>
     </div>);
   }
 
