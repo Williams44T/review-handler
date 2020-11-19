@@ -1,23 +1,33 @@
 import React from 'react';
+import Overall from './Overall.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      reviewCount: this.props.product.reviews.length,
+      avgRating: this.getAvgRating(this.props.product.reviews)
     };
+  }
+
+  getAvgRating(reviews) {
+    var avg = reviews.reduce((total, review) => total + review.rating, 0) / reviews.length;
+    return avg.toFixed(1);
   }
 
   render() {
     return (<div>
       <h3>RATINGS & REVIEWS</h3>
-      {/* <div>
-        <Overall />
-        <Breakdown />
+      <div>
+        <Overall
+          avgRating={this.state.avgRating}
+          reviewCount={this.state.reviewCount}
+        />
+        {/* <Breakdown />
         <Recommendation />
-        <Categories />
+        <Categories /> */}
       </div>
-      </div>
+      {/* </div>
         <Filter />
         <Reviews />
         <Actions />
