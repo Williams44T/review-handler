@@ -1,4 +1,5 @@
 import React from 'react';
+import StarCount from './StarCount.jsx';
 
 class Breakdown extends React.Component {
   constructor(props) {
@@ -31,9 +32,11 @@ class Breakdown extends React.Component {
     return (<div>
       <h4>RATING BREAKDOWN</h4>
       {/*if (this.state.filters.length > 0) { return <StarFilter filters={this.state.filters} />}*/}
-      {this.state.counts.map(count => {
-        return <div key={count[0]}>{count[0]}, {count[1]}</div>
-      })}
+      {this.state.counts.map(count => (<StarCount
+        key={count[0]}
+        star={count[0]}
+        count={count[1]}
+      />))}
     </div>)
   }
 
