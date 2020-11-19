@@ -7,7 +7,6 @@ class Breakdown extends React.Component {
     super(props);
     this.state = {
       counts: this.countStars(this.props.reviews),
-      filters: []
     }
   }
 
@@ -18,26 +17,15 @@ class Breakdown extends React.Component {
     return counts;
   }
 
-  toggleFilter(star) {
-    var filters = this.state.filters;
-    if (filters.includes(star)) {
-      var idx = filters.indexOf(star);
-      filters.splice(idx, 1);
-    } else {
-      filters.push(star)
-    }
-    this.setState({filters});
-  }
-
   render() {
     return (<div>
       <h4>RATING BREAKDOWN</h4>
-      <StarFilter filters={this.state.filters} />
+      <StarFilter filters={this.props.filters} />
       {this.state.counts.map(count => <StarCount
         key={count[0]}
         star={count[0]}
         count={count[1]}
-        onClick={this.toggleFilter.bind(this)}
+        onClick={this.props.onClick}
       />)}
     </div>)
   }
