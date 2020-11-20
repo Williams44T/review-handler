@@ -29,12 +29,13 @@ class App extends React.Component {
 
   toggleFilter(star) {
     var filters = this.state.filters;
-    if (filters.includes(star)) {
-      var idx = filters.indexOf(star);
-      filters.splice(idx, 1);
-    } else {
-      filters.push(star)
-    }
+    filters.includes(star) ? filters.splice(filters.indexOf(star), 1) : filters.push(star);
+    // if (filters.includes(star)) {
+    //   var idx = filters.indexOf(star);
+    //   filters.splice(idx, 1);
+    // } else {
+    //   filters.push(star)
+    // }
     this.setState({filters});
   }
 
