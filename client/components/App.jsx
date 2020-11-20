@@ -9,7 +9,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewCount: this.props.product.reviews.length,
       avgRating: this.getAvgRating(this.props.product.reviews),
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: [],
@@ -30,12 +29,6 @@ class App extends React.Component {
   toggleFilter(star) {
     var filters = this.state.filters;
     filters.includes(star) ? filters.splice(filters.indexOf(star), 1) : filters.push(star);
-    // if (filters.includes(star)) {
-    //   var idx = filters.indexOf(star);
-    //   filters.splice(idx, 1);
-    // } else {
-    //   filters.push(star)
-    // }
     this.setState({filters});
   }
 
@@ -50,7 +43,7 @@ class App extends React.Component {
       <div>
         <Overall
           avgRating={this.state.avgRating}
-          reviewCount={this.state.reviewCount}
+          reviewCount={this.props.product.reviews.length}
         />
         <Breakdown
           reviews={this.props.product.reviews}
