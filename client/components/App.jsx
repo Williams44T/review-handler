@@ -15,7 +15,8 @@ class App extends React.Component {
       filters: [],
       newest: true,
       helpful: false,
-      relevant: false
+      relevant: false,
+      order: 'newest'
     };
   }
 
@@ -40,13 +41,7 @@ class App extends React.Component {
     this.setState({filters});
   }
 
-  toggleOrder(order) {
-    var newest, helpful, relevant;
-    if (order === 'newest') { newest = true; helpful = false; relevant = false; }
-    if (order === 'helpful') { newest = false; helpful = true; relevant = false; }
-    if (order === 'relevant') { newest = false; helpful = false; relevant = true; }
-    this.setState({newest, helpful, relevant}, console.log(this.state.newest, this.state.helpful, this.state.relevant));
-  }
+  toggleOrder(order) { this.setState({order}); }
 
   render() {
     return (<div>
