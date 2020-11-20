@@ -13,9 +13,6 @@ class App extends React.Component {
       avgRating: this.getAvgRating(this.props.product.reviews),
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: [],
-      newest: true,
-      helpful: false,
-      relevant: false,
       order: 'newest'
     };
   }
@@ -41,7 +38,10 @@ class App extends React.Component {
     this.setState({filters});
   }
 
-  toggleOrder(order) { this.setState({order}); }
+  toggleOrder(order) {
+    if (this.state.order === order) { return; }
+    this.setState({order});
+  }
 
   render() {
     return (<div>
