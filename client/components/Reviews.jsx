@@ -1,5 +1,6 @@
 import React from 'react';
 import Review from './Review.jsx';
+import Actions from './Actions.jsx';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class Reviews extends React.Component {
         <Review
           review={review}
           key={review._id}
-        />))}
+        />
+      ))}
+      <Actions onClick={this.loadMoreReviews.bind(this)} />
     </div>);
   }
 

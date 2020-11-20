@@ -78,9 +78,6 @@ class App extends React.Component {
       <div>
         <Order onClick={this.toggleOrder.bind(this)}/>
         <Reviews reviews={this.state.reviews} />
-        {/*
-        <Actions />
-      */}
       </div>
     </div>);
   }
