@@ -14,7 +14,7 @@ class App extends React.Component {
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: [],
       order: 'newest',
-      reviews: this.props.product.reviews.sort((a, b) => b.created - a.created)
+      reviews: this.props.product.reviews.sort((a, b) => Date.parse(b.created) - Date.parse(a.created))
     };
   }
 
@@ -29,7 +29,7 @@ class App extends React.Component {
   }
 
   orderReviews(reviews) {
-    if (this.state.order === 'newest') { reviews.sort((a, b) => b.created - a.created); }
+    if (this.state.order === 'newest') { reviews.sort((a, b) => Date.parse(b.created) - Date.parse(a.created)); }
     if (this.state.order === 'helpful') { reviews.sort((a, b) => b.helpful.yes - a.helpful.yes); }
     if (this.state.order === 'relevant') { reviews.sort((a, b) => b.helpful.yes - a.helpful.yes); }//this is a stretch goal; will behave same as 'helpful' for now
     this.setState({reviews});
