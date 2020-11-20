@@ -14,7 +14,8 @@ class App extends React.Component {
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: [],
       order: 'newest',
-      reviews: this.props.product.reviews.sort((a, b) => Date.parse(b.created) - Date.parse(a.created))
+      reviews: this.props.product.reviews.sort((a, b) => Date.parse(b.created) - Date.parse(a.created)),
+      reviewCount: 2,
     };
   }
 
@@ -28,12 +29,14 @@ class App extends React.Component {
     return Math.round(trueCount / reviews.length * 100);
   }
 
+  loadMoreReviews() { this.setState({reviewCount: this.state.reviewCount + 5}) }
+
   orderReviews(reviews) {
     if (this.state.order === 'newest') { reviews.sort((a, b) => Date.parse(b.created) - Date.parse(a.created)); }
     if (this.state.order === 'helpful') { reviews.sort((a, b) => (b.helpful.yes - b.helpful.no) - (a.helpful.yes - a.helpful.no)); }
     //'relevant' is a stretch goal; will behave same as 'helpful' for now
     if (this.state.order === 'relevant') { reviews.sort((a, b) => (b.helpful.yes - b.helpful.no) - (a.helpful.yes - a.helpful.no)); }
-    this.setState({reviews});
+    this.setState({reviews, reviewCount: 2});
   }
 
   toggleOrder(order) {
@@ -77,7 +80,11 @@ class App extends React.Component {
       </div>
       <div>
         <Order onClick={this.toggleOrder.bind(this)}/>
-        <Reviews reviews={this.state.reviews} />
+        <Reviews
+          reviews={this.state.reviews}
+          reviewCount={this.state.reviewCount}
+          onClick={this.loadMoreReviews.bind(this)}
+        />
       </div>
     </div>);
   }

@@ -14,13 +14,13 @@ class Reviews extends React.Component {
 
   render() {
     return (<div>
-      {this.props.reviews.slice(0, this.state.reviewCount).map(review => (
+      {this.props.reviews.slice(0, this.props.reviewCount).map(review => (
         <Review
           review={review}
           key={review._id}
         />
       ))}
-      <Actions onClick={this.loadMoreReviews.bind(this)} />
+      <Actions onClick={this.props.onClick} />
     </div>);
   }
 
