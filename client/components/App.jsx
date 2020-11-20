@@ -36,8 +36,9 @@ class App extends React.Component {
   }
 
   filterReviews() {
-    var filtered = this.props.product.reviews.filter(review => this.state.filters.includes(review.rating));
-    this.setState({reviews: filtered}, this.orderReviews(filtered));
+    var filters = this.state.filters.length === 0 ? [1,2,3,4,5] : this.state.filters;
+    var reviews = this.props.product.reviews.filter(review => filters.includes(review.rating));
+    this.setState({reviews}, this.orderReviews(reviews));
   }
 
   toggleFilter(star) {

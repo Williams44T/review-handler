@@ -13,7 +13,7 @@ class Reviews extends React.Component {
   render() {
     return (<div>
       {this.props.reviews.map(review => {
-        return <p>{review.summary}</p>
+        return <p>{review.rating}</p>
       })}
     </div>);
   }
