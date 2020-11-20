@@ -14,8 +14,7 @@ class App extends React.Component {
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: [],
       order: 'newest',
-      // reviews: this.orderReviews(this.props.product.reviews)
-      reviews: this.props.product.reviews
+      reviews: this.props.product.reviews.sort((a, b) => b.created - a.created)
     };
   }
 
@@ -30,26 +29,30 @@ class App extends React.Component {
   }
 
   orderReviews(reviews) {
-    //if the order state is 'newest' order by newest
-    //if the order state is 'helpful' order by helpful
-    //reset the state of reviews
+    if (this.state.order === 'newest') { reviews.sort((a, b) => b.created - a.created); }
+    if (this.state.order === 'helpful') { reviews.sort((a, b) => b.helpful.yes - a.helpful.yes); }
+    if (this.state.order === 'relevant') { reviews.sort((a, b) => b.helpful.yes - a.helpful.yes); }//this is a stretch goal; will behave same as 'helpful' for now
+    this.setState({reviews});
+  }
+
+  toggleOrder(order) {
+    if (this.state.order === order) { return; }
+    this.setState({order}, () => {
+      this.orderReviews(this.state.reviews);
+      console.log('state order', this.state.order);
+    });
   }
 
   filterReviews() {
     var filters = this.state.filters.length === 0 ? [1,2,3,4,5] : this.state.filters;
     var reviews = this.props.product.reviews.filter(review => filters.includes(review.rating));
-    this.setState({reviews}, this.orderReviews(reviews));
+    this.orderReviews(reviews);
   }
 
   toggleFilter(star) {
     var filters = this.state.filters;
     filters.includes(star) ? filters.splice(filters.indexOf(star), 1) : filters.push(star);
-    this.setState({filters}, this.filterReviews());
-  }
-
-  toggleOrder(order) {
-    if (this.state.order === order) { return; }
-    this.setState({order}, this.orderReviews(this.state.reviews));
+    this.setState({filters}, this.filterReviews);
   }
 
   render() {
