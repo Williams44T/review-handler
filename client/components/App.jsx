@@ -12,7 +12,8 @@ class App extends React.Component {
       avgRating: this.getAvgRating(this.props.product.reviews),
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: [],
-      order: 'newest'
+      order: 'newest',
+      reviews: this.orderReviews(this.props.product.reviews)
     };
   }
 
@@ -26,15 +27,26 @@ class App extends React.Component {
     return Math.round(trueCount / reviews.length * 100);
   }
 
+  orderReviews(reviews) {
+    //if the order state is 'newest' order by newest
+    //if the order state is 'helpful' order by helpful
+    //reset the state of reviews
+  }
+
+  filterReviews() {
+    var filtered = this.props.product.reviews.filter(review => this.state.filters.includes(review.rating));
+    this.setState({reviews: filtered}, this.orderReviews(filtered));
+  }
+
   toggleFilter(star) {
     var filters = this.state.filters;
     filters.includes(star) ? filters.splice(filters.indexOf(star), 1) : filters.push(star);
-    this.setState({filters});
+    this.setState({filters}, this.filterReviews());
   }
 
   toggleOrder(order) {
     if (this.state.order === order) { return; }
-    this.setState({order});
+    this.setState({order}, this.orderReviews(this.state.reviews));
   }
 
   render() {
