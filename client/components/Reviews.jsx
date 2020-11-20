@@ -1,4 +1,5 @@
 import React from 'react';
+import Review from './Review.jsx';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -12,28 +13,14 @@ class Reviews extends React.Component {
 
   render() {
     return (<div>
-      {this.props.reviews.map(review => {
-        return <p key={review._id}>{JSON.stringify(review.created)}, {review.helpful.yes}</p>
-      })}
+      {this.props.reviews.slice(0, this.state.reviewCount).map(review => (
+        <Review
+          review={review}
+          key={review._id}
+        />))}
     </div>);
   }
 
 }
 
 export default Reviews;
-
-/*
-stars
-date
-summary
-detail
-recommended?
-photos
-username
-verified?
-was this review helpful
-yes
-number
-no
-number
-*/
