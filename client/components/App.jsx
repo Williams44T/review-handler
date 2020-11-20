@@ -4,6 +4,7 @@ import Breakdown from './Breakdown.jsx';
 import Recommendation from './Recommendation.jsx';
 import Categories from './Categories.jsx';
 import Order from './Order.jsx';
+import Reviews from './Reviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class App extends React.Component {
       recommendedPercent: this.getRecommendedPercent(this.props.product.reviews),
       filters: [],
       order: 'newest',
-      reviews: this.orderReviews(this.props.product.reviews)
+      // reviews: this.orderReviews(this.props.product.reviews)
+      reviews: this.props.product.reviews
     };
   }
 
@@ -70,8 +72,8 @@ class App extends React.Component {
       </div>
       <div>
         <Order onClick={this.toggleOrder.bind(this)}/>
+        <Reviews reviews={this.state.reviews} />
         {/*
-        <Reviews />
         <Actions />
       */}
       </div>
