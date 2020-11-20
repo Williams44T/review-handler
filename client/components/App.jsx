@@ -30,8 +30,9 @@ class App extends React.Component {
 
   orderReviews(reviews) {
     if (this.state.order === 'newest') { reviews.sort((a, b) => Date.parse(b.created) - Date.parse(a.created)); }
-    if (this.state.order === 'helpful') { reviews.sort((a, b) => b.helpful.yes - a.helpful.yes); }
-    if (this.state.order === 'relevant') { reviews.sort((a, b) => b.helpful.yes - a.helpful.yes); }//this is a stretch goal; will behave same as 'helpful' for now
+    if (this.state.order === 'helpful') { reviews.sort((a, b) => (b.helpful.yes - b.helpful.no) - (a.helpful.yes - a.helpful.no)); }
+    //'relevant' is a stretch goal; will behave same as 'helpful' for now
+    if (this.state.order === 'relevant') { reviews.sort((a, b) => (b.helpful.yes - b.helpful.no) - (a.helpful.yes - a.helpful.no)); }
     this.setState({reviews});
   }
 
