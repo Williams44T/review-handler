@@ -1,8 +1,9 @@
 import React from 'react';
+import Rating from './Rating.jsx';
 
 var Overall = (props) => (<div>
   <div>{props.avgRating}</div>
-  <div>stars will go here</div>
+  <Rating />
   <div>{props.reviewCount} Reviews</div>
 </div>)
 
