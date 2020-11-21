@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 class Rating extends React.Component {
   constructor(props) {
     super(props);
-    this.size = 15;
+    this.size = 50;
   }
 
   buildEmptyStars() {
@@ -15,26 +15,34 @@ class Rating extends React.Component {
       ></canvas>));
   }
 
-  componentDidMount() { [1,2,3,4,5].forEach(star => this.buildStar(this.refs['star' + star].getContext('2d'))); }
+  componentDidMount() { [1,2,3,4,5].forEach((star, idx) => this.buildStar(this.refs['star' + star].getContext('2d'), star)); }
 
-  buildStar(ctx) {
-    // ctx.fillRect(4,4,12,12);
+  buildStar(ctx, star) {
     var x = this.size;
-    var y = .4//top line
-    ctx.moveTo(x/2, 0);//move to top center of square
-    ctx.lineTo(x*.35, x*y);//complete left side of top spike
-    ctx.lineTo(x*.05, x*y);//complete top side of top-left spike
-    ctx.lineTo(x*.3, x*.6);//complete bottom side of top-left spike
-    ctx.lineTo(x*.2, x);//complete top side of bottom-left spike
-    ctx.lineTo(x/2, x*.7);//complete bottom side of bottom-left spike
-    ctx.lineTo(x*.8 , x);//complete bottom side of bottom-right spike
-    ctx.lineTo(x*.7, x*.6);//complete top side of bottom-right spike
-    ctx.lineTo(x*.95, x*y);//complete bottom side of top-right spike
-    ctx.lineTo(x*.65, x*y);//complete top side of top-right spike
-    ctx.lineTo(x/2, 0);//complete star
+    var topHeight = .4
+    var topWidth = .9;
+    var topSpikeWidth = .25;
+    var centerHeight = .6;
+    var centerWidth = .4;
+    var bottomHeight = .7;
+    var bottomWidth = .6;
 
+    ctx.moveTo(x/2, 0);//top spike point
+    ctx.lineTo(x*(1-topSpikeWidth)/2, x*topHeight);//top spike, left
+    ctx.lineTo(x*(1-topWidth)/2, x*topHeight);//top-left spike, top
+    ctx.lineTo(x*(1-centerWidth)/2, x*centerHeight);//top-left spike, bottom
+    ctx.lineTo(x*(1-bottomWidth)/2, x);//bottom-left spike, top
+    ctx.lineTo(x/2, x*bottomHeight);//bottom-left spike, bottom
+    ctx.lineTo(x*(1-((1-bottomWidth)/2)), x);//bottom-right spike, bottom
+    ctx.lineTo(x*(1-((1-centerWidth)/2)), x*centerHeight);//bottom-right spike, top
+    ctx.lineTo(x*(1-((1-topWidth)/2)), x*topHeight);//top-right spike, bottom
+    ctx.lineTo(x*(1-((1-topSpikeWidth)/2)), x*topHeight);//top-right spike, top
+    ctx.lineTo(x/2, 0);//top spike, right
+
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
     ctx.stroke();
-    ctx.fill();
+    if (star <= this.props.rating) { ctx.fill(); }
   }
 
   render() { return <div ref="stars">{this.buildEmptyStars()}</div>; }

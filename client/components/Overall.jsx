@@ -3,7 +3,7 @@ import Rating from './Rating.jsx';
 
 var Overall = (props) => (<div>
   <div>{props.avgRating}</div>
-  <Rating />
+  <Rating rating={props.avgRating} />
   <div>{props.reviewCount} Reviews</div>
 </div>)
 

@@ -9,7 +9,7 @@ var Reviews = (props) => {
   var formDate = (date) => `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
   return (<div>
-    <div><Rating /></div>
+    <div><Rating rating={review.rating} /></div>
     <div>{formDate(new Date(review.created))}</div>
     <div>{review.summary}</div>
     <div>{review.detail}</div>
