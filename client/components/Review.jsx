@@ -1,5 +1,6 @@
 import React from 'react';
 import faker from 'faker';
+import Rating from './Rating.jsx';
 
 var Reviews = (props) => {
   var review = props.review;
@@ -8,7 +9,7 @@ var Reviews = (props) => {
   var formDate = (date) => `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
   return (<div>
-    <div>stars will go here</div>
+    <div><Rating /></div>
     <div>{formDate(new Date(review.created))}</div>
     <div>{review.summary}</div>
     <div>{review.detail}</div>
