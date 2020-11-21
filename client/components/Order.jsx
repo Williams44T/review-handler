@@ -1,9 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 
-var Order = (props) => (<div>
+var OrderStyle = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+var Order = (props) => (<OrderStyle>
   <div onClick={() => props.onClick('newest')}>NEWEST</div>
   <div onClick={() => props.onClick('helpful')}>HELPFUL</div>
   <div onClick={() => props.onClick('relevant')}>RELEVANT</div>
-</div>);
+</OrderStyle>);
 
 export default Order;

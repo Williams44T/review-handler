@@ -5,6 +5,22 @@ import Recommendation from './Recommendation.jsx';
 import Categories from './Categories.jsx';
 import Order from './Order.jsx';
 import Reviews from './Reviews.jsx';
+import styled from 'styled-components';
+var reviewsWidth = 70
+var AppStyle = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
+`;
+var Title = styled.h3`
+  width: 100%;
+`;
+var RatingsStyle = styled.div`
+  width: ${100 - reviewsWidth}%;
+`;
+var ReviewsStyle = styled.div`
+  width: ${reviewsWidth}%;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -60,9 +76,9 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div>
-      <h3>RATINGS & REVIEWS</h3>
-      <div>
+    return (<AppStyle>
+      <Title>RATINGS & REVIEWS</Title>
+      <RatingsStyle>
         <Overall
           avgRating={this.state.avgRating}
           reviewCount={this.props.product.reviews.length}
@@ -77,16 +93,16 @@ class App extends React.Component {
           categories={this.props.product.rating_categories}
           reviews={this.props.product.reviews}
         />
-      </div>
-      <div>
+      </RatingsStyle>
+      <ReviewsStyle>
         <Order onClick={this.toggleOrder.bind(this)}/>
         <Reviews
           reviews={this.state.reviews}
           reviewCount={this.state.reviewCount}
           onClick={this.loadMoreReviews.bind(this)}
         />
-      </div>
-    </div>);
+      </ReviewsStyle>
+    </AppStyle>);
   }
 
 }
