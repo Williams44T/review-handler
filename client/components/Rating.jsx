@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 class Rating extends React.Component {
   constructor(props) {
     super(props);
-    this.size = 50;
+    this.size = 15;
   }
 
   buildEmptyStars() {
@@ -23,8 +23,8 @@ class Rating extends React.Component {
     var topWidth = .9;
     var topSpikeWidth = .25;
     var centerHeight = .6;
-    var centerWidth = .4;
-    var bottomHeight = .7;
+    var centerWidth = .34;
+    var bottomHeight = .73;
     var bottomWidth = .6;
 
     ctx.moveTo(x/2, 0);//top spike point
@@ -40,7 +40,7 @@ class Rating extends React.Component {
     ctx.lineTo(x/2, 0);//top spike, right
 
     ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
+    // ctx.lineWidth = 2;
     ctx.stroke();
     if (star <= this.props.rating) { ctx.fill(); }
   }
