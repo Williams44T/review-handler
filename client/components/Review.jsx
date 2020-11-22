@@ -7,8 +7,40 @@ var FlexDisplay = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-var HelpfulDisplay = styled.div`
+var HelpfulStyle = styled.div`
   display: flex;
+  font-size: 14px;
+`;
+var HelpfulButtonStyle = styled.button`
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+`;
+var HelpfulCountStyle = styled.div`
+  color: #767677;
+  line-height: 20px;
+`;
+var DateStyle = styled.div`
+  color: #767677;
+  font-size: 14px;
+  line-height: 20px;
+`;
+var SummaryStyle = styled.div`
+  font-size: 18px;
+  line-height: 16px;
+  letter-spacing: 0.7px;
+  font-weight: 600;
+  text-transform: uppercase;
+`;
+var RecommendationStyle = styled.div`
+  font-size: 14px;
+  line-height: 20px;
+`;
+var NameStyle = styled.div`
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
 `;
 
 var Reviews = (props) => {
@@ -20,19 +52,19 @@ var Reviews = (props) => {
   return (<div>
     <FlexDisplay>
       <div><Rating rating={review.rating} /></div>
-      <div>{formDate(new Date(review.created))}</div>
+      <DateStyle>{formDate(new Date(review.created))}</DateStyle>
     </FlexDisplay>
-    <div>{review.summary}</div>
+    <SummaryStyle>{review.summary}</SummaryStyle>
     <div>{review.detail}</div>
-    <div style={{display: review.recommended ? 'block' : 'none'}}>I recommend this product</div>
+    <RecommendationStyle style={{display: review.recommended ? 'block' : 'none'}}>I recommend this product</RecommendationStyle>
     {/* <div>{review.photos.map(photo => <img src={`${photo}?random=${faker.date.recent()}`} />)}</div> */}
-    <div>{review.username}</div>
+    <NameStyle>{review.username}</NameStyle>
     <div style={{display: review.verified ? 'block' : 'none'}}>- Verified Purchaser</div>
-    <HelpfulDisplay>
+    <HelpfulStyle>
       <div>Was this review helpful?</div>
-      <button>Yes</button><div>{review.helpful.yes}</div>
-      <button>No</button><div>{review.helpful.no}</div>
-    </HelpfulDisplay>
+      <HelpfulButtonStyle>Yes</HelpfulButtonStyle><HelpfulCountStyle>({review.helpful.yes})</HelpfulCountStyle>
+      <HelpfulButtonStyle>No</HelpfulButtonStyle><HelpfulCountStyle>({review.helpful.no})</HelpfulCountStyle>
+    </HelpfulStyle>
   </div>);
 };
 

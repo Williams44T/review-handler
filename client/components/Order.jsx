@@ -4,6 +4,7 @@ import styled from 'styled-components';
 var OrderStyle = styled.div`
   display: flex;
   justify-content: space-around;
+  font-size: 14px;
 `;
 
 var Order = (props) => (<OrderStyle>

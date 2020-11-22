@@ -1,19 +1,16 @@
 import React from 'react';
 import StarToggle from './StarToggle.jsx';
-import styled from 'styled-components';
+import Styles from '../styles.js';
 
-var StarCountStyle = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-var StarCount = (props) => (<StarCountStyle>
+var StarCount = (props) => (<Styles.StarCount>
   <StarToggle
     star={props.star}
     onClick={props.onClick}
   />
-  <div>bar will go here</div>
-  <div>{props.count}</div>
-</StarCountStyle>);
+  <Styles.StarCountBar>
+    <Styles.StarCountBarFill width={props.count / props.total}/>
+  </Styles.StarCountBar>
+  <Styles.StarCountNum>{props.count}</Styles.StarCountNum>
+</Styles.StarCount>);
 
 export default StarCount;

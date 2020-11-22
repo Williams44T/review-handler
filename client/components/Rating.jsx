@@ -45,7 +45,13 @@ class Rating extends React.Component {
     if (star <= this.props.rating) { ctx.fill(); }
   }
 
-  render() { return <div ref="stars">{this.buildEmptyStars()}</div>; }
+  render() {
+    return <div
+      style={{'margin-bottom': '6px'}}
+      ref={"stars"}
+      >
+        {this.buildEmptyStars()}
+      </div>; }
 };
 
 export default Rating;

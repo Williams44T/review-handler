@@ -1,24 +1,13 @@
 import React from 'react';
 import Rating from './Rating.jsx';
-import styled from 'styled-components';
+import Styles from '../styles.js';
 
-var OverallStyle = styled.div`
-  background-color: #2ada71;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-`;
-var RatingNumStyle = styled.div`
-  // height: 100%;
-`;
-
-var Overall = (props) => (<OverallStyle>
-  <RatingNumStyle>{props.avgRating}</RatingNumStyle>
-  <div>
+var Overall = (props) => (<Styles.Overall>
+  <Styles.RatingNum>{props.avgRating}</Styles.RatingNum>
+  <div style={{'padding-left': '8px'}}>
     <Rating rating={props.avgRating} />
-    <div>{props.reviewCount} Reviews</div>
+    <Styles.ReviewCount><strong>{props.reviewCount}</strong> Reviews</Styles.ReviewCount>
   </div>
-</OverallStyle>)
+</Styles.Overall>)
 
 export default Overall;

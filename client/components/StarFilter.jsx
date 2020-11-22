@@ -1,13 +1,11 @@
 import React from 'react';
 import StarToggle from './StarToggle.jsx';
 import styled from 'styled-components';
+import Styles from '../styles.js';
 
-var StarFilterStyle = styled.div`
-  flex-wrap: wrap;
-`;
-
-var StarFilter = (props) => (<StarFilterStyle style={{display: props.filters.length > 0 ? 'flex' : 'none'}}>
-  <div>Showing reviews:</div>
+var StarFilter = (props) => (<Styles.Filter style={{display: props.filters.length > 0 ? 'flex' : 'none'}}>
+  {/* <Styles.FilterText>Showing reviews:</Styles.FilterText> */}
+  {'Showing reviews: '}
   {props.filters.map(filter => (
     <StarToggle
       key={filter}
@@ -15,6 +13,6 @@ var StarFilter = (props) => (<StarFilterStyle style={{display: props.filters.len
       onClick={props.onClick}
     />
   ))}
-</StarFilterStyle>);
+</Styles.Filter>);
 
 export default StarFilter;
