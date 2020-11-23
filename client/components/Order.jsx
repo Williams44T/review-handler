@@ -1,16 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import Styles from '../styles.js';
 
-var OrderStyle = styled.div`
-  display: flex;
-  justify-content: space-around;
-  font-size: 14px;
-`;
-
-var Order = (props) => (<OrderStyle>
-  <div onClick={() => props.onClick('newest')}>NEWEST</div>
-  <div onClick={() => props.onClick('helpful')}>HELPFUL</div>
-  <div onClick={() => props.onClick('relevant')}>RELEVANT</div>
-</OrderStyle>);
+var Order = (props) => (<Styles.Order>
+  <Styles.OrderButton
+    active={props.order === 'newest' ? true : false}
+    onClick={() => props.onClick('newest')}
+  >NEWEST</Styles.OrderButton>
+  <Styles.OrderButton
+    active={props.order === 'helpful' ? true : false}
+    onClick={() => props.onClick('helpful')}
+  >HELPFUL</Styles.OrderButton>
+  <Styles.OrderButton
+    active={props.order === 'relevant' ? true : false}
+    onClick={() => props.onClick('relevant')}
+  >RELEVANT</Styles.OrderButton>
+</Styles.Order>);
 
 export default Order;

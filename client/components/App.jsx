@@ -81,7 +81,10 @@ class App extends React.Component {
         />
       </Styles.Ratings>
       <Styles.Reviews>
-        <Order onClick={this.toggleOrder.bind(this)}/>
+        <Order
+          onClick={this.toggleOrder.bind(this)}
+          order={this.state.order}
+        />
         <Reviews
           reviews={this.state.reviews}
           reviewCount={this.state.reviewCount}

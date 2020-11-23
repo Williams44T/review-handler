@@ -3,7 +3,9 @@ import Styles from '../styles.js';
 
 var Scale = (props) => (<Styles.CategoryScale>
   <Styles.ScaleTriangle rating={props.rating}/>
-  {/* <div>bars * 4 divs</div> */}
+  <Styles.ScaleDividers>
+    {Array(3).fill().map(divider => <Styles.ScaleDivider />)}
+  </Styles.ScaleDividers>
 </Styles.CategoryScale>);
 
 export default Scale;

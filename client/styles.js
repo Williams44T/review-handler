@@ -13,6 +13,7 @@ var Styles = {
    }
    button {
      margin: 0;
+     outline: none;
    }
   `,
   App: styled.div`
@@ -43,6 +44,7 @@ var Styles = {
   //App >
   Ratings: styled.div`
   width: 100%;
+  margin-bottom: 40px;
   @media (min-width: 960px) {
     width: calc(33.3333% - 10px);
   };
@@ -170,19 +172,33 @@ var Styles = {
   border: 1px solid transparent;
   border-width: 20px 10px;
   border-top-color: #2ada71;
-  // background-color: transparent;
-  // height: auto;
-  // transform: translateX(-50%);
-  // z-index: 3;
+  transform: translateX(-50%);
+  z-index: 1;
+  `,
+  //App > Rating > Categories > Category > CategoryScale >
+  ScaleDividers: styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  bottom: 40px;
+  `,
+  //App > Rating > Categories > Category > CategoryScale > ScaleBreaks >
+  ScaleDivider: styled.div`
+  width: 4px;
+  height: 4px;
+  background-color: white;
   `,
   //App > Rating > Categories > Category >
   ScaleLabels: styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+  font-family: AdihausDIN,Helvetica,Arial,sans-serif;
   font-size: 11px;
   `,
   //App > Rating > Categories > Category > ScaleLabels >
-  ScaleLabel: styled.div`
+  ScaleLabel: styled.span`
+  line-height: 15px;
   `,
   //App >
   Reviews: styled.div`
@@ -190,6 +206,36 @@ var Styles = {
   @media (min-width: 960px) {
     width: calc(66.66667% - 10px);
   };
+  `,
+    //App >
+  Reviews: styled.div`
+  width: 100%;
+  @media (min-width: 960px) {
+    width: calc(66.66667% - 10px);
+  };
+  `,
+  //App > Reviews >
+  Order: styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 14px;
+  font-family: AdihausDIN,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  `,
+  //App > Reviews > Order
+  OrderButton: styled.button`
+  width: 100%;
+  margin-left: -1px;
+  border: 1px solid #767677;
+  border-color: ${props => props.active ? 'black' : '#767677'};
+  box-shadow: ${props => props.active? 'inset 0 -2px 0 #000' : 'none'};
+  padding: 16px 10px;
+  color: ${props => props.active? 'black' : '#767677'};
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: ${props => props.active? '700' : '400'};
+  cursor: pointer;
+  z-index: ${props => props.active? '1' : '0'};
   `,
 };
 
