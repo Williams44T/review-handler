@@ -7,6 +7,9 @@ var Styles = {
    *, :after, :before {
      box-sizing: border-box;
    }
+   body {
+     margin: 0;
+   }
    h1, h2, h3, h4, h5, h6 {
      margin: 0;
      padding: 0;
@@ -14,6 +17,7 @@ var Styles = {
    button {
      margin: 0;
      outline: none;
+     font-family: AdihausDIN,Helvetica,Arial,sans-serif;
    }
   `,
   App: styled.div`
@@ -22,7 +26,7 @@ var Styles = {
   justify-content: space-between;
   width: 100%;
   max-width: 970px;
-  margin: 0;
+  margin: auto;
   padding: 6px 20px 0px 20px;
   background-color: #fff;
   color: #000;
@@ -207,24 +211,17 @@ var Styles = {
     width: calc(66.66667% - 10px);
   };
   `,
-    //App >
-  Reviews: styled.div`
-  width: 100%;
-  @media (min-width: 960px) {
-    width: calc(66.66667% - 10px);
-  };
-  `,
   //App > Reviews >
   Order: styled.div`
   display: flex;
   justify-content: space-around;
-  margin-bottom: 14px;
   font-family: AdihausDIN,Helvetica,Arial,sans-serif;
   font-size: 14px;
   `,
   //App > Reviews > Order
   OrderButton: styled.button`
   width: 100%;
+  margin-bottom: 14px;
   margin-left: -1px;
   border: 1px solid #767677;
   border-color: ${props => props.active ? 'black' : '#767677'};
@@ -237,6 +234,137 @@ var Styles = {
   cursor: pointer;
   z-index: ${props => props.active? '1' : '0'};
   `,
+  //App > Reviews >
+  Review: styled.div`
+  margin-top: 40px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 40px;
+  `,
+  //App > Reviews > Review >
+  ReviewDate: styled.div`
+  color: #767677;
+  line-height: 20px;
+  font-size: 14px;
+  `,
+  //App > Reviews > Review >
+  Summary: styled.div`
+  margin-top: 20px;
+  line-height: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  `,
+  //App > Reviews > Review >
+  Detail: styled.div`
+  margin-top: 10px;
+  `,
+  //App > Reviews > Review >
+  UserRecommendation: styled.div`
+  display: ${props => props.recommended ? 'flex' : 'none'};
+  align-items: center;
+  margin-top: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  `,
+  //App > Reviews > Review >
+  Photo: styled.img`
+  display: inline-block;
+  width: 85px;
+  height: 85px;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+  `,
+  //App > Reviews > Review >
+  User: styled.div`
+  margin: 10px 0 14px;
+  line-height: 20px;
+  font-family: AdihausDIN,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  `,
+  //App > Reviews > Review > User >
+  Name: styled.span`
+  font-weight: 700;
+  text-transform: uppercase;
+  `,
+  //App > Reviews > Review > User >
+  Verified: styled.span`
+  display: ${props => props.verified ? 'inline' : 'none'};
+  color: #767677;
+  `,
+  //App > Reviews > Review >
+  Helpful: styled.span`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+  font-family: AdihausDIN,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  `,
+  //App > Reviews > Review > Helpful >
+  HelpfulButton: styled.button`
+  background-color: transparent;
+  border: none;
+  padding: 0 1px;
+  line-height: 20px;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  `,
+  //App > Reviews > Review > Helpful >
+  HelpfulCount: styled.span`
+  margin-left: 4px;
+  color: #767677;
+  line-height: 20px;
+  `,
+  Actions: styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  @media (min-width: 960px) {
+    flex-direction: row;
+  };
+  margin-top: 40px;
+  `,
+  ActionButton: styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin-right: 10px;
+  @media (max-width: 960px) {
+    margin-top: 20px;
+  };
+  border: 1px solid black;
+  padding: 0 21px;
+  background-color: white;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  flex: 1 1 auto;
+  text-align: start;
+  `,
+  ActionText: styled.span`
+  line-height: 20px;
+  text-overflow: ellipsis;
+  `,
+  ButtonBefore: styled.div`
+  position: absolute;
+  left: 4px;
+  bottom: -4px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  `
 };
+
+Styles.WriteButton = styled(Styles.ActionButton)`
+margin-right: 0;
+background-color: black;
+color: white;
+transform: translate(-3px, -3px);
+`;
 
 export default Styles;

@@ -1,33 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
+import Styles from '../styles.js'
 
-var ActionsStyle = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-var LoadButtonStyle = styled.button`
-  width: 50%;
-  height: 50px;
-  border: 1px solid black;
-  background-color: transparent;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2px;
-`;
-var WriteButtonStyle = styled.button`
-  width: 50%;
-  height: 50px;
-  border: 1px solid black;
-  background-color: black;
-  color: white;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2px;
-`;
-
-var Actions = (props) => (<ActionsStyle>
-  <LoadButtonStyle onClick={props.onClick}>LOAD MORE</LoadButtonStyle>
-  <WriteButtonStyle>WRITE A REVIEW</WriteButtonStyle>
-</ActionsStyle>);
+var Actions = (props) => (<Styles.Actions>
+  <Styles.ActionButton onClick={props.onClick}>
+    <Styles.ActionText>LOAD MORE</Styles.ActionText>
+    <svg width="24px" height="24px">
+      <path
+        d="M 17.59 7 l 5 5 l -5 5 M 0 12 h 22"
+        fill="none"
+        stroke-width="2"
+        stroke="currentcolor"
+      />
+    </svg>
+  </Styles.ActionButton>
+  <Styles.WriteButton >
+    <Styles.ButtonBefore />
+    <Styles.ActionText>WRITE A REVIEW</Styles.ActionText>
+    <svg width="24px" height="24px">
+      <path
+        d="M 17.59 7 l 5 5 l -5 5 M 0 12 h 22"
+        fill="none"
+        stroke-width="2"
+        stroke="currentcolor"
+      />
+    </svg>
+  </Styles.WriteButton>
+</Styles.Actions>);
 
 export default Actions;

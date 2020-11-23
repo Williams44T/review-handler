@@ -1,47 +1,7 @@
 import React from 'react';
 import faker from 'faker';
 import Rating from './Rating.jsx';
-import styled from 'styled-components';
-
-var FlexDisplay = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-var HelpfulStyle = styled.div`
-  display: flex;
-  font-size: 14px;
-`;
-var HelpfulButtonStyle = styled.button`
-  background-color: transparent;
-  border: none;
-  text-decoration: underline;
-`;
-var HelpfulCountStyle = styled.div`
-  color: #767677;
-  line-height: 20px;
-`;
-var DateStyle = styled.div`
-  color: #767677;
-  font-size: 14px;
-  line-height: 20px;
-`;
-var SummaryStyle = styled.div`
-  font-size: 18px;
-  line-height: 16px;
-  letter-spacing: 0.7px;
-  font-weight: 600;
-  text-transform: uppercase;
-`;
-var RecommendationStyle = styled.div`
-  font-size: 14px;
-  line-height: 20px;
-`;
-var NameStyle = styled.div`
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 700;
-  text-transform: uppercase;
-`;
+import Styles from '../styles.js';
 
 var Reviews = (props) => {
   var review = props.review;
@@ -49,23 +9,40 @@ var Reviews = (props) => {
   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   var formDate = (date) => `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
-  return (<div>
-    <FlexDisplay>
-      <div><Rating rating={review.rating} /></div>
-      <DateStyle>{formDate(new Date(review.created))}</DateStyle>
-    </FlexDisplay>
-    <SummaryStyle>{review.summary}</SummaryStyle>
-    <div>{review.detail}</div>
-    <RecommendationStyle style={{display: review.recommended ? 'block' : 'none'}}>I recommend this product</RecommendationStyle>
-    {/* <div>{review.photos.map(photo => <img src={`${photo}?random=${faker.date.recent()}`} />)}</div> */}
-    <NameStyle>{review.username}</NameStyle>
-    <div style={{display: review.verified ? 'block' : 'none'}}>- Verified Purchaser</div>
-    <HelpfulStyle>
-      <div>Was this review helpful?</div>
-      <HelpfulButtonStyle>Yes</HelpfulButtonStyle><HelpfulCountStyle>({review.helpful.yes})</HelpfulCountStyle>
-      <HelpfulButtonStyle>No</HelpfulButtonStyle><HelpfulCountStyle>({review.helpful.no})</HelpfulCountStyle>
-    </HelpfulStyle>
-  </div>);
+  return (<Styles.Review>
+    <div style={{display: 'flex', 'justify-content': 'space-between'}}>
+      <Rating rating={review.rating} />
+      <Styles.ReviewDate>{formDate(new Date(review.created))}</Styles.ReviewDate>
+    </div>
+    <Styles.Summary>{review.summary}</Styles.Summary>
+    <Styles.Detail>{review.detail}</Styles.Detail>
+    <Styles.UserRecommendation recommended={review.recommended}>
+      <svg width='19px' height='19px' style={{'margin-right': '6px'}}>
+        <path d="M2.5 10.5l4 4 10-10" fill="none" stroke="currentcolor"/>
+      </svg>
+      <span>I recommend this product</span>
+    </Styles.UserRecommendation>
+    <div style={{'margin-top': '20px'}}>
+      {review.photos.map(photo => (
+        <Styles.Photo src={`${photo}?random=${faker.date.recent()}`} />
+      ))}
+    </div>
+    <Styles.User>
+      <Styles.Name>{review.username}</Styles.Name>
+      <Styles.Verified verified={review.verified}> - Verified Purchaser</Styles.Verified>
+    </Styles.User>
+    <Styles.Helpful>
+      Was this review helpful?
+      <div style={{'margin-left': '12px'}}>
+        <Styles.HelpfulButton>Yes</Styles.HelpfulButton>
+        <Styles.HelpfulCount>({review.helpful.yes})</Styles.HelpfulCount>
+      </div>
+      <div style={{'margin-left': '12px'}}>
+        <Styles.HelpfulButton>No</Styles.HelpfulButton>
+        <Styles.HelpfulCount>({review.helpful.no})</Styles.HelpfulCount>
+      </div>
+    </Styles.Helpful>
+  </Styles.Review>);
 };
 
 export default Reviews;
