@@ -1,16 +1,18 @@
 import React from 'react';
 import StarToggle from './StarToggle.jsx';
+import styled from 'styled-components';
+import Styles from '../styles.js';
 
-var StarFilter = (props) => (<div style={{display: props.filters.length > 0 ? 'block' : 'none'}}>
-  <div>Showing reviews:</div>
+var StarFilter = (props) => (<Styles.Filter style={{display: props.filters.length > 0 ? 'flex' : 'none'}}>
+  {/* <Styles.FilterText>Showing reviews:</Styles.FilterText> */}
+  {'Showing reviews: '}
   {props.filters.map(filter => (
-    // return <div key={filter}>{filter} STARS</div>
     <StarToggle
       key={filter}
       star={filter}
       onClick={props.onClick}
     />
   ))}
-</div>);
+</Styles.Filter>);
 
 export default StarFilter;

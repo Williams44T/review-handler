@@ -1,5 +1,6 @@
 import React from 'react';
 import Category from './Category.jsx';
+import Styles from '../styles.js';
 
 var Categories = (props) => {
 
@@ -18,14 +19,13 @@ var Categories = (props) => {
 
   getAvgRatingPerCategory(props.categories, props.reviews);
 
-  return (<div>
+  return (<Styles.Categories>
     {props.categories.map(category => (
-      // return <div key={category.name}>{category.rating}</div>
       <Category
         key={category.name}
         category={category}
       />))}
-  </div>);
+  </Styles.Categories>);
 };
 
 export default Categories;

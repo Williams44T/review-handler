@@ -1,6 +1,7 @@
 import React from 'react';
 import StarCount from './StarCount.jsx';
 import StarFilter from './StarFilter.jsx';
+import Styles from '../styles.js';
 
 class Breakdown extends React.Component {
   constructor(props) {
@@ -18,8 +19,8 @@ class Breakdown extends React.Component {
   }
 
   render() {
-    return (<div>
-      <h4>RATING BREAKDOWN</h4>
+    return (<Styles.Breakdown>
+      <Styles.BreakdownTitle>RATING BREAKDOWN</Styles.BreakdownTitle>
       <StarFilter
         filters={this.props.filters}
         onClick={this.props.onClick}
@@ -28,9 +29,10 @@ class Breakdown extends React.Component {
         key={count[0]}
         star={count[0]}
         count={count[1]}
-        onClick={this.props.onClick}
+        total={this.props.reviews.length}
+        onClick={count[1] > 0 ? this.props.onClick: false}
       />)}
-    </div>)
+    </Styles.Breakdown>)
   }
 
 }

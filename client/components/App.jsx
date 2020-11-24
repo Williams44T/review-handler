@@ -5,6 +5,7 @@ import Recommendation from './Recommendation.jsx';
 import Categories from './Categories.jsx';
 import Order from './Order.jsx';
 import Reviews from './Reviews.jsx';
+import Styles from '../styles.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -60,9 +61,10 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div>
-      <h3>RATINGS & REVIEWS</h3>
-      <div>
+    return (<Styles.App>
+      <Styles.GlobalStyle />
+      <Styles.Title>RATINGS & REVIEWS</Styles.Title>
+      <Styles.Ratings>
         <Overall
           avgRating={this.state.avgRating}
           reviewCount={this.props.product.reviews.length}
@@ -77,16 +79,19 @@ class App extends React.Component {
           categories={this.props.product.rating_categories}
           reviews={this.props.product.reviews}
         />
-      </div>
-      <div>
-        <Order onClick={this.toggleOrder.bind(this)}/>
+      </Styles.Ratings>
+      <Styles.Reviews>
+        <Order
+          onClick={this.toggleOrder.bind(this)}
+          order={this.state.order}
+        />
         <Reviews
           reviews={this.state.reviews}
           reviewCount={this.state.reviewCount}
           onClick={this.loadMoreReviews.bind(this)}
         />
-      </div>
-    </div>);
+      </Styles.Reviews>
+    </Styles.App>);
   }
 
 }
