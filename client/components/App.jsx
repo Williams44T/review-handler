@@ -42,10 +42,7 @@ class App extends React.Component {
 
   toggleOrder(order) {
     if (this.state.order === order) { return; }
-    this.setState({order}, () => {
-      this.orderReviews(this.state.reviews);
-      console.log('state order', this.state.order);
-    });
+    this.setState({order}, () => {this.orderReviews(this.state.reviews); });
   }
 
   filterReviews() {
