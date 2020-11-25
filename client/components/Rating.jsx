@@ -9,6 +9,7 @@ class Rating extends React.Component {
   buildEmptyStars() {
     return Array(5).fill().map((ele, idx) => (
       <canvas
+        key={idx}
         ref={'star' + ++idx}
         width={this.size}
         height={this.size}
@@ -47,7 +48,7 @@ class Rating extends React.Component {
 
   render() {
     return <div
-      style={{'margin-bottom': '6px'}}
+      style={{'marginBottom': '6px'}}
       ref={"stars"}
       >
         {this.buildEmptyStars()}

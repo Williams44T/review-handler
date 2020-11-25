@@ -8,7 +8,7 @@ var Actions = (props) => (<Styles.Actions>
       <path
         d="M 17.59 7 l 5 5 l -5 5 M 0 12 h 22"
         fill="none"
-        stroke-width="2"
+        strokeWidth="2"
         stroke="currentcolor"
       />
     </svg>
@@ -20,7 +20,7 @@ var Actions = (props) => (<Styles.Actions>
       <path
         d="M 17.59 7 l 5 5 l -5 5 M 0 12 h 22"
         fill="none"
-        stroke-width="2"
+        strokeWidth="2"
         stroke="currentcolor"
       />
     </svg>

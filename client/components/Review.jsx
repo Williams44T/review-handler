@@ -10,21 +10,24 @@ var Reviews = (props) => {
   var formDate = (date) => `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
   return (<Styles.Review>
-    <div style={{display: 'flex', 'justify-content': 'space-between'}}>
+    <div style={{display: 'flex', 'justifyContent': 'space-between'}}>
       <Rating rating={review.rating} />
       <Styles.ReviewDate>{formDate(new Date(review.created))}</Styles.ReviewDate>
     </div>
     <Styles.Summary>{review.summary}</Styles.Summary>
     <Styles.Detail>{review.detail}</Styles.Detail>
     <Styles.UserRecommendation recommended={review.recommended}>
-      <svg width='19px' height='19px' style={{'margin-right': '6px'}}>
+      <svg width='19px' height='19px' style={{'marginRight': '6px'}}>
         <path d="M2.5 10.5l4 4 10-10" fill="none" stroke="currentcolor"/>
       </svg>
       <span>I recommend this product</span>
     </Styles.UserRecommendation>
-    <div style={{'margin-top': '20px'}}>
-      {review.photos.map(photo => (
-        <Styles.Photo src={`${photo}?random=${faker.date.recent()}`} />
+    <div style={{'marginTop': '20px'}}>
+      {review.photos.map((photo, idx) => (
+        <Styles.Photo
+          key={idx}
+          src={`${photo}?random=${faker.date.recent()}`}
+        />
       ))}
     </div>
     <Styles.User>
@@ -33,11 +36,11 @@ var Reviews = (props) => {
     </Styles.User>
     <Styles.Helpful>
       Was this review helpful?
-      <div style={{'margin-left': '12px'}}>
+      <div style={{'marginLeft': '12px'}}>
         <Styles.HelpfulButton>Yes</Styles.HelpfulButton>
         <Styles.HelpfulCount>({review.helpful.yes})</Styles.HelpfulCount>
       </div>
-      <div style={{'margin-left': '12px'}}>
+      <div style={{'marginLeft': '12px'}}>
         <Styles.HelpfulButton>No</Styles.HelpfulButton>
         <Styles.HelpfulCount>({review.helpful.no})</Styles.HelpfulCount>
       </div>
