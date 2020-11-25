@@ -1,5 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var morgan = require('morgan');
 var productController = require('../db/controllers/products.js');
 
 var mongoOptions = {
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost/adidas', mongoOptions);
 var app = express();
 
 app.use(express.static(__dirname + '/../public'));
+app.use(morgan('dev'));
 
 app.get('/api/reviews/:id', (req, res) => {
   console.log('GET request received for product id ' + req.params.id);
