@@ -12,7 +12,7 @@ var app = express();
 
 app.use(express.static(__dirname + '/../public'));
 
-app.get('/products/:id/reviews', (req, res) => {
+app.get('/api/reviews/:id', (req, res) => {
   console.log('GET request received for product id ' + req.params.id);
   productController.findProduct(req, res);
 });
