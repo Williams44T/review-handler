@@ -64,7 +64,7 @@ var seedProducts = (qty) => {
     var product = {
       product_id: i,
       rating_categories,
-      reviews: createReviews(rating_categories, 2, 20) //defines min and max qty of reviews per product
+      reviews: createReviews(rating_categories, 2, 200) //defines min and max qty of reviews per product
     };
     Products.insertOne(product);
   }
