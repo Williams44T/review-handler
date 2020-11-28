@@ -1,9 +1,9 @@
 # Project Name
 
-> This project aims to clone the reviews component of an example item page of Adidas using random, fake data.
-> Three other components are being cloned: photo carousel, checkou, recommendations
-> A proxy server will pull all four of these components together to make a full clone.
-> Other components found on Adidas's single item page that aren't being cloned will have an image serve in thier place.
+- This project aims to clone the reviews component of an example item page of Adidas using random, fake data.
+- Three other components are being cloned: photo carousel, checkou, recommendations
+- A proxy server will pull all four of these components together to make a full clone.
+- Other components found on Adidas's single item page that aren't being cloned will have an image serve in thier place.
 
 ## Related Projects
 
@@ -20,13 +20,14 @@
 
 ## Usage
 
-> 'npm run build': to have webpack watch all changes
-> 'npm start': to run server
+- `npm run build`: to have webpack watch all changes
+- `npm start`: to run server
 
 In the case that the server wasn't closed properly:
-> 'lsof -i TCP:8000': to find the PID associated with port 8000, or whichever port the server is currently configured to listen on
-> 'kill -9 <PID>': to stop listening on that port
-> 'npm start': to run server
+- `lsof -i TCP:<8000>`: to find the PID associated with whichever port the server is currently configured to listen on
+- `kill -9 <PID>`: to stop listening on that port
+- `npm run build`: to have webpack watch all changes
+- `npm start`: to run server
 
 ## Requirements
 
@@ -38,9 +39,5 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ### Installing Dependencies
 
-From within the root directory:
-
-```
-npm install
-```
+From within the root directory: `npm install`
 
