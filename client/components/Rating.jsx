@@ -41,7 +41,7 @@ class Rating extends React.Component {
     ctx.lineTo(x/2, 0);//top spike, right
 
     ctx.strokeStyle = 'black';
-    // ctx.lineWidth = 2;
+    ctx.lineWidth = .5;
     ctx.stroke();
     if (star <= this.props.rating) { ctx.fill(); }
   }
