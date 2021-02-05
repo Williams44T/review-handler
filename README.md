@@ -1,4 +1,4 @@
-# Project Name
+# Review Handler
 
 - This project aims to clone the reviews component of an example item page of Adidas using random, fake data.
 - Three other components are being cloned: photo carousel, checkou, recommendations
